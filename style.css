@@ -1,0 +1,48 @@
+/* Importo la fuente de Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap");
+
+/* Utilicé Eva Desing System para los colores */
+:root {
+    --color-violeta: #2B0137;
+    --color-verde: #3EAA25;
+    --color-rojo: #AF370C;
+    --color-celeste: #00A9C6;
+    --color-amarillo: #AFAF15;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--color-violeta);
+    font-family: "Poppins";
+}
+
+body {
+    display: flex; 
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: auto;
+  }
+
+.tituloH1 {
+    color: var(--color-celeste);
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 375px) {
+    .faq-card {
+      padding: 1rem;
+    }
+  
+    .faq-title {
+      font-size: 20px;
+    }
+  
+    .faq-question {
+      font-size: 16px;
+    }
+  }
