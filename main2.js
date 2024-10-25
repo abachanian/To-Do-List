@@ -75,8 +75,34 @@ const mostrarTask = () => {
     tasksArray.forEach(task => {
 
         const li = document.createElement("li");
-        li.textContent = `${task.titulo} - Estado: ${task.estado}`;
+        li.textContent = `${task.titulo}`;
         li.dataset.id = task.id;//Guardo el ID en el atributo data-id
+
+        const imgBorrar = document.createElement("img");
+        imgBorrar.src = "./Assets/trash.svg";
+        imgBorrar.alt = "Eliminar Tarea";
+        imgBorrar.dataset.id = task.id;
+
+        const imgEstado = document.createElement("img");
+        imgEstado.src = "./Assets/square.svg";
+        imgEstado.alt = "Cambiar estado";
+        imgEstado.dataset.id = task.id;
+
+        // Añado el evento de clic para borrar la tarea
+        imgBorrar.addEventListener("click", () => {
+            borrarTask(task.id);
+        });
+
+        // Añado el evento de clic para cambiar el estado de la tarea
+        imgEstado.addEventListener("click", () => {
+            task.cambiarEstado();
+            saveOnLocalStorage(tasksArray); // Guarda el nuevo estado en LocalStorage
+            mostrarTask(); // Muestra la lista actualizada
+        });
+
+        li.appendChild(imgBorrar);
+        li.appendChild(imgEstado);
+        
         
         if (task.estado === "P") {
 
@@ -91,5 +117,13 @@ const mostrarTask = () => {
 
 }
 
+//? Creo la función para borrar la tarea
+const borrarTask = (id) => {
+    tasksArray = tasksArray.filter(task => task.id !== id); // Filtra la tarea que se quiere eliminar
+    saveOnLocalStorage(tasksArray); // Guarda el nuevo array en LocalStorage
+    mostrarTask(); // Muestra la lista actualizada
+}
+
+//? Creo una función
 
 mostrarTask();
