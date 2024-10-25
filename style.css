@@ -3,34 +3,241 @@
 
 /* Utilicé Eva Desing System para los colores */
 :root {
-    --color-violeta: #2B0137;
-    --color-verde: #3EAA25;
-    --color-rojo: #AF370C;
-    --color-celeste: #00A9C6;
-    --color-amarillo: #AFAF15;
+    --color-negro: #252525;
+    --color-fondo: #4d4d4d;
+    --color-verde: #40B72C;
+    --color-rojo: #F74B42;
+    --color-azul: #2C63F9;
+    --color-naranja: #E29B00;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: var(--color-violeta);
-    font-family: "Poppins";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Poppins";
 }
 
 body {
-    display: flex; 
-    justify-content: center;
-    min-height: 100vh;
-    position: relative;
-    overflow: auto;
-  }
+  background: var(--color-negro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
-.tituloH1 {
-    color: var(--color-celeste);
-    text-align: center;
-    font-size: 4rem;
-    margin-bottom: 2rem;
+h1 {
+  font-size: 4rem;
+  color: var(--color-naranja);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+h2 {
+  font-size: 2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.tituloH2-P {
+  color: var(--color-rojo);
+}
+
+.tituloH2-C {
+  color: var(--color-verde);
+}
+
+.logo {
+  height: 5rem;
+}
+
+.seccion-tareas {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 4rem;
+  width: 80%;
+  align-items: center;
+}
+
+.form-tareas {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.input-container {
+  display: flex;
+}
+
+.input {
+  display: flex;
+  background-color: var(--color-fondo);
+  outline: none;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 0px 50px 0px 10px;
+  width: 400px;
+  align-items: center;
+  justify-content: flex-start;
+  height: 5rem;
+}
+
+.input-img {
+  width: 2rem;
+  margin: 0px 10px 0px 10px;
+}
+
+.input-p {
+  display: flex;
+  background-color: var(--color-fondo);
+  font-size: 1.5rem;
+  color: var(--color-azul);
+  font-weight: 620;
+  margin: 0px 10px 0px 10px;
+}
+
+.input-text {
+  width: 600px;
+  background-color: var(--color-fondo);
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.input-textarea {
+  width: 600px;
+  background-color: var(--color-fondo);
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  height: 5rem;
+}
+
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  line-height: normal;
+  vertical-align: middle;
+}
+
+.input-date {
+  width: 600px;
+  background-color: var(--color-fondo);
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  height: 5rem;
+}
+
+.input-btn {
+  display: flex;
+  outline: none;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  width: 400px;
+  justify-content: center;
+}
+
+.add-btn {
+  background: linear-gradient(45deg, var(--color-rojo),var(--color-azul));
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: rgb(226, 226, 226);
+  font-size: 2.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  align-items: center;
+  width: 400px;
+}
+
+.logo-add {
+  height: 3rem;
+  align-items: center;
+}
+
+.delete-btn {
+  cursor: pointer;
+}
+
+.check-btn {
+  cursor: pointer;
+}
+
+.tasks-list-p {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: min(550px, 90%);
+  gap: 1rem;
+}
+
+.tasks-list-p li {
+  background: #282828;
+  color: rgb(226, 226, 226);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px 30px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.tasks-list-c {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: min(550px, 90%);
+  gap: 1rem;
+}
+
+.tasks-list-c li {
+  background: #282828;
+  color: rgb(226, 226, 226);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px 30px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.add-btn:hover,
+.check-btn,
+.deleteAll-btn:hover {
+  background: linear-gradient(45deg, #f68606, #e00745);
 }
 
 @media (max-width: 375px) {

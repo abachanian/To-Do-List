@@ -4,10 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Tareas</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@400;700&display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 class="tituloH1">Listado de Tareas</h1>
+    <section class="seccion-tareas">
+        <h1 class="tituloH1">
+            <img src="./Assets/list.svg" alt="logo" class="logo">
+            Listado de Tareas
+        </h1>
+
+        <form class="form-tareas">
+            <div class="input-container">
+                <div class="input">
+                    <p class="input-p">
+                        <img src="./Assets/type.svg" alt="Busqueda" class="input-img">
+                        Título de la tarea: 
+                    </p>
+                </div>
+                <input type="text" class="input-text" placeholder="Ingrese el Título de la tarea">
+            </div>
+            <!--<div class="input-container">
+                <div class="input">
+                    <p class="input-p">
+                        <img src="./Assets/type.svg" alt="Busqueda" class="input-img">
+                        Descripción: 
+                    </p>
+                </div>
+                <textarea class="input-textarea" placeholder="Ingrese descripción"></textarea>
+            </div>
+            <div class="input-container">
+                <div class="input">
+                    <p class="input-p">
+                        <img src="./Assets/calendar.svg" alt="Busqueda" class="input-img">
+                        Fecha: 
+                    </p>
+                </div>
+                    <input type="date" class="input-date">
+            </div>-->
+            <div class="input-btn">
+                <button type="submit" class="add-btn">Agregar</button>
+            </div>
+        </form>
+
+        <h2 class="tituloH2-P">
+            Listado de Tareas Pendientes
+        </h2>
+        <ul class="tasks-list-p"></ul>
+
+        <h2 class="tituloH2-C">
+            Listado de Tareas completas
+        </h2>
+        <ul class="tasks-list-c"></ul>
+	
+	    <script src="main2.js"></script>
+        
+    </section>
+    
+
 </body>
 </html>
+<!-- utilucé para los íconos https://iconsvg.xyz/
+ 
+
+-->
