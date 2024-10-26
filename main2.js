@@ -1,12 +1,20 @@
 //? Creo las constantes de los elementos del DOM
 //* Es el input de la tarea
 const input = document.querySelector(".input-text");
+//* Es el input de la descripcion
+const inputDescripcion = document.querySelector(".input-textarea");
+//* Es el input de la fecha
+const inputFecha = document.querySelector(".input-date");
 //* Es el formulario
 const addForm = document.querySelector(".form-tareas");
 //* Es la lista de tareas Completas
 const tasksListCompleta = document.querySelector(".tasks-list-c");
 //* Es la lista de tareas
 const tasksListPendiente = document.querySelector(".tasks-list-p");
+//* Creo el botón de eliminar
+const deleteTarea = document.querySelector(".delete-task");
+//* Creo el botón de cambio de estado
+const changeTask = document.querySelector(".change-task");
 
 
 //? Creo la clase del objeto task
@@ -15,9 +23,11 @@ class objetoTask {
     static currentID = 1;
 
     //*En el objeto, el estado lo dejo en formato predeterminada "P", lo cual marca que está pendiente al momento de crearse. El ID de la tarea se va a incrementar automáticamente cuando se cree una tarea.
-    constructor (titulo, estado = "P") {
+    constructor (titulo, descripcion, fecha, estado = "P") {
         this.id = objetoTask.currentID++;
         this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.fecha = fecha;
         this.estado = estado;
     }
 
@@ -44,6 +54,8 @@ const agregarTasks = (evento) => {
     evento.preventDefault();//Busco evitar que se recargue la página
 
     const tituloTask = input.value.trim();//Guardo el valor del input en la variable titulo y le hago un trim por si tiene espacios adelante o al final del mismo.
+    const descripcionTask = inputDescripcion.value.trim();//Creo la variable descripción
+    const fechaTask = inputFecha.value;//creo la variable con el dato de la fecha
 
     if (!tituloTask.length) {
 
@@ -55,7 +67,12 @@ const agregarTasks = (evento) => {
 
     }else {
 
-        let nuevaTask = new objetoTask(tituloTask);//creo una variable nuevaTask, la cual llama al objeto task y le crea un título
+        if (!descripcionTask.length) {
+
+            descripcionTask = "Sin descripción";
+            }
+
+        let nuevaTask = new objetoTask(tituloTask, descripcionTask, fechaTask);//creo una variable nuevaTask, la cual llama al objeto task y le crea un título
         tasksArray.push(nuevaTask);//guardo el objeto creado en el array;
         saveOnLocalStorage(tasksArray);//Guardo en el localStorage el array nuevo
         input.value = "";//Reinicio el input para que quede vacío
@@ -73,35 +90,50 @@ const mostrarTask = () => {
     tasksListCompleta.innerHTML = "";//Borro todo antes que muestre
 
     tasksArray.forEach(task => {
-
+        //Creo la lista de cada tarea
         const li = document.createElement("li");
-        li.textContent = `${task.titulo}`;
+        li.textContent = `${task.titulo} - ${task.descripcion} - ${task.fecha}`;
         li.dataset.id = task.id;//Guardo el ID en el atributo data-id
+
+        //Creo un div que es para el ordenamiento de los botones
+        const divBotones = document.createElement("div");
+        divBotones.classList.add("div-botones");
+        
+        const btnBorrar = document.createElement("button");
+        btnBorrar.classList.add("delete-task");
+        btnBorrar.dataset.id = task.id;
+        divBotones.appendChild(btnBorrar);
 
         const imgBorrar = document.createElement("img");
         imgBorrar.src = "./Assets/trash.svg";
         imgBorrar.alt = "Eliminar Tarea";
-        imgBorrar.dataset.id = task.id;
+        imgBorrar.classList.add("img-boton");
+        btnBorrar.appendChild(imgBorrar);
+        
+        const btnChange = document.createElement("button");
+        btnChange.classList.add("delete-task");
+        btnChange.dataset.id = task.id;
+        divBotones.appendChild(btnChange);
 
         const imgEstado = document.createElement("img");
         imgEstado.src = "./Assets/square.svg";
         imgEstado.alt = "Cambiar estado";
-        imgEstado.dataset.id = task.id;
+        imgEstado.classList.add("img-boton");
+        btnChange.appendChild(imgEstado);
 
         // Añado el evento de clic para borrar la tarea
-        imgBorrar.addEventListener("click", () => {
+        btnBorrar.addEventListener("click", () => {
             borrarTask(task.id);
         });
 
         // Añado el evento de clic para cambiar el estado de la tarea
-        imgEstado.addEventListener("click", () => {
+        btnChange.addEventListener("click", () => {
             task.cambiarEstado();
             saveOnLocalStorage(tasksArray); // Guarda el nuevo estado en LocalStorage
             mostrarTask(); // Muestra la lista actualizada
         });
 
-        li.appendChild(imgBorrar);
-        li.appendChild(imgEstado);
+        li.appendChild(divBotones);
         
         
         if (task.estado === "P") {

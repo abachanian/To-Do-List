@@ -1,7 +1,7 @@
 /* Importo la fuente de Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap");
-
 /* Utilicé Eva Design System para los colores */
+
 :root {
     --color-negro: #252525;
     --color-fondo: #4d4d4d;
@@ -28,7 +28,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 20px; /* Añadido para que no toque los bordes en pantallas pequeñas */
+    padding: 20px;
 }
 
 h1, h2 {
@@ -62,8 +62,12 @@ h2 {
     gap: 1rem;
     padding: 2rem;
     width: 100%;
-    max-width: 600px; /* Limitar ancho máximo */
-    margin: auto; /* Centrar el contenedor */
+    max-width: 600px;
+    margin: auto;
+}
+
+.img-boton {
+    height: 50%;
 }
 
 .form-tareas {
@@ -77,8 +81,8 @@ h2 {
     background-color: var(--color-fondo);
     padding: var(--padding);
     border-radius: var(--border-radius);
-    flex: 1 1 100%; /* Permite que el input se ajuste al tamaño disponible */
-    max-width: 600px; /* Limitar ancho máximo */
+    flex: 1 1 100%;
+    max-width: 600px;
     margin: 10px 0px 10px 0px;
 }
 
@@ -89,17 +93,17 @@ h2 {
   font-size: 1.5rem;
   color: var(--color-azul);
   font-weight: 620;
-  margin: 10px 0px 10px 0px;
 }
 
-.input-text {
-    width: 100%; /* Cambiado a 100% */
+.input-text, .input-textarea, .input-date {
+    width: 100%;
     background-color: var(--color-fondo);
     border: none;
     padding: var(--padding);
     border-radius: var(--border-radius);
     color: white;
     font-size: 1.5rem;
+    margin: 10px 0px 10px 0px;
 }
 
 .input-btn {
@@ -114,14 +118,20 @@ h2 {
     color: rgb(226, 226, 226);
     font-size: 2rem;
     cursor: pointer;
-    width: 100%; /* Cambiado a 100% */
+    width: 100%;
+}
+
+.delete-task, change-task {
+    background: #282828;
+    margin: 2px;
+    border-radius: 50%;
 }
 
 .tasks-list-p {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    width: 100%; /* Cambiado a 100% */
+    width: 100%;
     gap: 1rem;
 }
 
@@ -140,7 +150,7 @@ h2 {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    width: 100%; /* Cambiado a 100% */
+    width: 100%;
     gap: 1rem;
 }
 
@@ -155,17 +165,22 @@ h2 {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.div-botones {
+    display: flex;
+    justify-content: flex-start;
+}
+
 @media (max-width: 768px) {
     h1 {
-        font-size: 2rem; /* Ajustar tamaño del título en pantallas más pequeñas */
+        font-size: 2rem;
     }
 
     h2 {
-        font-size: 1.25rem; /* Ajustar tamaño de subtítulos */
+        font-size: 1.25rem;
     }
 
     .form-tareas {
-        flex-direction: column; /* Apilar elementos en pantallas pequeñas */
-        align-items: stretch; /* Para que ocupen todo el ancho */
+        flex-direction: column;
+        align-items: stretch;   
     }
 }
