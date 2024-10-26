@@ -76,6 +76,8 @@ const agregarTasks = (evento) => {
         tasksArray.push(nuevaTask);//guardo el objeto creado en el array;
         saveOnLocalStorage(tasksArray);//Guardo en el localStorage el array nuevo
         input.value = "";//Reinicio el input para que quede vacío
+        inputDescripcion.value = "";//Reinicio el input para que quede vacío
+        inputFecha.value = "";//Reinicio el input para que quede vacío
         mostrarTask();//Llamo a la función mostrarTask para que se visualicen las mismas.
     }
 }
