@@ -54,8 +54,8 @@ const agregarTasks = (evento) => {
     evento.preventDefault();//Busco evitar que se recargue la página
 
     const tituloTask = input.value.trim();//Guardo el valor del input en la variable titulo y le hago un trim por si tiene espacios adelante o al final del mismo.
-    const descripcionTask = inputDescripcion.value.trim();//Creo la variable descripción
-    const fechaTask = inputFecha.value;//creo la variable con el dato de la fecha
+    let descripcionTask = inputDescripcion.value.trim();//Creo la variable descripción
+    let fechaTask = inputFecha.value;//creo la variable con el dato de la fecha
 
     if (!tituloTask.length) {
 
@@ -66,11 +66,14 @@ const agregarTasks = (evento) => {
         alert("Ya existe una tarea con el mismo título");//Si ya existe una tarea con el mismo título, muestro alerta
 
     }else {
-
         if (!descripcionTask.length) {
 
             descripcionTask = "Sin descripción";
-            }
+        }
+        if (!fechaTask.length) {
+
+            fechaTask = "Sin Vencimiento";
+        }
 
         let nuevaTask = new objetoTask(tituloTask, descripcionTask, fechaTask);//creo una variable nuevaTask, la cual llama al objeto task y le crea un título
         tasksArray.push(nuevaTask);//guardo el objeto creado en el array;
