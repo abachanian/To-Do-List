@@ -138,12 +138,15 @@ h2 {
 .tasks-list-p li {
     background: #282828;
     color: rgb(226, 226, 226);
+    font-size: 1.5rem;
+    font-weight: bold; 
     border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
 }
 
 .tasks-list-c {
@@ -156,7 +159,9 @@ h2 {
 
 .tasks-list-c li {
     background: #282828;
-    color: rgb(226, 226, 226);
+    color: rgb(112, 111, 111);
+    font-size: 1.5rem;
+    text-decoration: line-through;
     border-radius: 8px;
     display: flex;
     justify-content: space-between;

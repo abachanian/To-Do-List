@@ -121,7 +121,13 @@ const mostrarTask = () => {
         divBotones.appendChild(btnChange);
 
         const imgEstado = document.createElement("img");
-        imgEstado.src = "./Assets/square.svg";
+        
+        if (task.estado === "P") {
+            imgEstado.src = "./Assets/square.svg";
+        } else {
+            imgEstado.src = "./Assets/check-square.svg";
+        }
+
         imgEstado.alt = "Cambiar estado";
         imgEstado.classList.add("img-boton");
         btnChange.appendChild(imgEstado);
