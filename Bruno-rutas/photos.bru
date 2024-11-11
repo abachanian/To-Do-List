@@ -1,0 +1,15 @@
+meta {
+  name: photos
+  type: http
+  seq: 5
+}
+
+get {
+  url: https://jsonplaceholder.typicode.com/photos?_limit=2
+  body: none
+  auth: none
+}
+
+params:query {
+  _limit: 2
+}

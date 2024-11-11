@@ -1,0 +1,15 @@
+meta {
+  name: users
+  type: http
+  seq: 7
+}
+
+get {
+  url: https://jsonplaceholder.typicode.com/users?_limit=2
+  body: none
+  auth: none
+}
+
+params:query {
+  _limit: 2
+}

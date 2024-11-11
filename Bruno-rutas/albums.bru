@@ -1,0 +1,15 @@
+meta {
+  name: albums
+  type: http
+  seq: 4
+}
+
+get {
+  url: https://jsonplaceholder.typicode.com/albums?_limit=2
+  body: none
+  auth: none
+}
+
+params:query {
+  _limit: 2
+}

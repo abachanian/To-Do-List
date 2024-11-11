@@ -1,0 +1,15 @@
+meta {
+  name: posts
+  type: http
+  seq: 3
+}
+
+get {
+  url: https://jsonplaceholder.typicode.com/posts?_limit=2
+  body: none
+  auth: none
+}
+
+params:query {
+  _limit: 2
+}

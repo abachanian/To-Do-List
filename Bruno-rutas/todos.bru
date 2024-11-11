@@ -1,0 +1,15 @@
+meta {
+  name: todos
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://jsonplaceholder.typicode.com/todos?_limit=2
+  body: none
+  auth: none
+}
+
+params:query {
+  _limit: 2
+}

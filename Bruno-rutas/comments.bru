@@ -1,0 +1,15 @@
+meta {
+  name: comments
+  type: http
+  seq: 6
+}
+
+get {
+  url: https://jsonplaceholder.typicode.com/comments?_limit=2
+  body: none
+  auth: none
+}
+
+params:query {
+  _limit: 2
+}

@@ -19,6 +19,10 @@ const changeTask = document.querySelector(".change-task");
 const editTask = document.querySelector(".edit-task");
 //* Creo el botón de la API
 const inputApi = document.querySelector(".api-btn");
+//* Creo el botón de mostrar descripción
+const btnDescripcion = document.querySelector(".descripcion-task");
+//* Creo el botón de ocultar descripción
+const btnOcultar = document.querySelector(".descripcion-task");
 
 //? Creo la clase del objeto task
 class objetoTask {
@@ -120,6 +124,33 @@ const mostrarTask = () => {
         //Creo un div que es para el ordenamiento de los botones
         const divBotones = document.createElement("div");
         divBotones.classList.add("div-botones");
+
+        //Creo el botón para mostrar la descripción de la tarea
+        const btnDescripcion = document.createElement("button");
+        btnDescripcion.classList.add("descripcion-task");
+        btnDescripcion.dataset.id = task.id;
+        divBotones.appendChild(btnDescripcion);
+
+        //Creo la imagen del botón de descripción
+        const imgDescripcion = document.createElement("img");
+        imgDescripcion.src = "./Assets/chevron-down.svg";
+        imgDescripcion.alt = "Mostrar descripción";
+        imgDescripcion.classList.add("img-boton");
+        btnDescripcion.appendChild(imgDescripcion);
+
+        //creo el botón para ocultar la descripción de la tarea, el mismo debe estar por defecto en display none
+        const btnOcultar = document.createElement("button");
+        btnOcultar.classList.add("descripcion-task");
+        btnOcultar.dataset.id = task.id;
+        btnOcultar.style.display = "none";
+        divBotones.appendChild(btnOcultar);
+
+        //Creo la imagen del botón de ocultar descripción
+        const imgOcultar = document.createElement("img");
+        imgOcultar.src = "./Assets/chevron-up.svg";
+        imgOcultar.alt = "Ocultar descripción";
+        imgOcultar.classList.add("img-boton");
+        btnOcultar.appendChild(imgOcultar);
         
         //Creo el botón de borrar task
         const btnBorrar = document.createElement("button");
@@ -185,6 +216,20 @@ const mostrarTask = () => {
             editarTask(task.id);
         });
 
+        // Añado el evento de clic para mostrar la descripción de la tarea
+        btnDescripcion.addEventListener("click", () => {
+            text.style.display = "block";
+            btnDescripcion.style.display = "none";
+            btnOcultar.style.display = "block";
+        });
+
+        // Añado el evento de clic para ocultar la descripción de la tarea
+        btnOcultar.addEventListener("click", () => {
+            text.style.display = "none";
+            btnDescripcion.style.display = "block";
+            btnOcultar.style.display = "none";
+        });
+
         li.appendChild(divBotones);
         
         if (task.estado === "P") {
@@ -218,18 +263,18 @@ const editarTask = (id) => {
 // Función para cargar tareas desde la API
 const cargarTareasDesdeAPI = async () => {
     try {
-        const response = await fetch("https://jsonplaceholder.typicode.com/todos?_limit=10");
+        const response = await fetch("https://jsonplaceholder.typicode.com/comments?_limit=10");
         const data = await response.json();
         
         // Hago un recorrido de los datos obtenidos de la API y creo una nueva tarea por cada uno
         data.forEach(item => {
-            if (item.title && item.title.trim().length > 0) {
+            if (item.name && item.name.trim().length > 0) {
                 // Creo una nueva tarea y la agrego al array
                 const nuevaTask = new objetoTask(
-                    item.title,//Título de la tarea
-                    "Tarea de API",// Descripción predeterminada
-                    null,//Sin fecha predeterminada
-                    item.completed ? "C" : "P"//Estado basado en el valor de "completed" de la API
+                    item.name,//Título de la tarea
+                    item.body,// Descripción de la tarea
+                    "Sin Vencimiento",//Sin vencimiento por defecto, ya que la api no tiene campo fecha
+                    "P"//Estado de la tarea sale como pendiente
                 );
                 tasksArray.push(nuevaTask);
             }
